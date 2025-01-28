@@ -5,9 +5,11 @@
 #include "Modules/RiskManagement.mqh";
 #include "Modules/TradeExecution.mqh";
 #include "Modules/Utils.mqh";
+#include "Modules/ChartComment.mqh"
 
 // Global instance of the TradeExecution class
 TradeExecution tradeExec;
+ChartComment chartComment;
 
 input double LOTSize = 0.01;
 input int STOPLoss = 100;
@@ -30,11 +32,23 @@ input int RISKPercentage = 2;
 int OnInit()
 {
     Print("Expert Advisor Initialized");
+    // Example: Display a static message
+    chartComment.Show("EA Status", "Hello, MQL5!");
     return INIT_SUCCEEDED;
 }
 
 void OnTick()
 {
+   // Example: Display real-time dynamic information
+    string messages[];
+    ArrayResize(messages, 3);
+    messages[0] = "Symbol: " + _Symbol;
+    messages[1] = "Bid: " + DoubleToString(SymbolInfoDouble(_Symbol, SYMBOL_BID), 5);
+    messages[2] = "Ask: " + DoubleToString(SymbolInfoDouble(_Symbol, SYMBOL_ASK), 5);
+    
+    chartComment.Show("Market Information", messages, ArraySize(messages));
+    
+    
     string signal = EmaCrossoverSignal(EMAFastPeriod,EMASlowPeriod);
     Comment(signal);
     double dynamicLotSize = CalculateLotSize(RISKPercentage,STOPLoss);

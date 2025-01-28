@@ -1,7 +1,7 @@
 #ifndef SIGNALS_MQH
 #define SIGNALS_MQH
-#include "EmaCrossoverSignal.mqh";
-#include "RsiSignal.mqh";
+#include "Signals/EmaCrossoverSignal.mqh";
+#include "Signals/RsiSignal.mqh";
 
 /*
 int GetTradeSignal()
