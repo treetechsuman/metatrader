@@ -25,6 +25,7 @@ double CalculateLotSize(double riskPercentage, double stopLossPips)
 
     // Calculate risk amount in currency
     double riskAmount = (riskPercentage / 100.0) * accountBalance;
+    //Print("Risk Amount: ",riskAmount);
 
     // Calculate the value of 1 pip in the deposit currency
     double pipValue = (tickValue / tickSize) * pointValue;

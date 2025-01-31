@@ -2,7 +2,8 @@
 #define SIGNALS_MQH
 #include "Signals/EmaCrossoverSignal.mqh";
 #include "Signals/RsiSignal.mqh";
-
+#include "Signals/EmaSignal.mqh";
+#include "Signals/BollingerBandSignal.mqh";
 /*
 int GetTradeSignal()
 {
